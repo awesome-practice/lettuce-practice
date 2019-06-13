@@ -1,0 +1,18 @@
+== note
+redis服务为aws beta的, 压测时需要加节点
+
+https://console.aws.amazon.com/elasticache/home?region=us-east-1#redis-cluster-nodes:id=cluster-redis-beta-0001;clusters[aws redis beta]
+
+[source,yaml]
+----
+spring:
+  redis:
+    cluster:
+      nodes: cluster-redis-beta.mihgdg.clustercfg.use1.cache.amazonaws.com:6379
+
+----
+
+== 研究结论
+
+lettuce无负载均衡且无法提供相关扩展的可能
+

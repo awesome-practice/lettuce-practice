@@ -1,0 +1,27 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: lettuce-practice
+  cache:
+    redis:
+      time-to-live: 300s
+  redis:
+    ssl: false
+    cluster:
+      nodes: 127.0.0.1:30005 # wsl-ubuntu
+#      nodes: 192.168.60.199:7001,192.168.60.199:7002,192.168.60.199:7003
+#      nodes: cluster-redis-beta.mihgdg.clustercfg.use1.cache.amazonaws.com:6379
+#      nodes: cluster-test.mihgdg.clustercfg.use1.cache.amazonaws.com:6379
+    lettuce:
+      pool:
+        max-wait: 2000ms
+        max-active: 10
+        max-idle: 10
+        min-idle: 0
+    timeout: 2s
+logging:
+  level:
+    io.lettuce.core: debug
+    io.lettuce.core.cluster: debug
+    org.springframework.data.redis: debug
